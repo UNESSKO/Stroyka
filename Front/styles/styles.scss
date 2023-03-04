@@ -1,14 +1,18 @@
-//COLORS
+/*--COLORS--*/
 $accent-color: #FFC700;
-//SIZES
-$font-size: 12px;
+$background-color: #FFFFFF;
+/*--SIZES--*/
+$font: 12px;
+$padding: 12px;
 
 .content-container {
   display: flex;
+  align-items: inherit;
   justify-content: space-between;
   margin: auto;
-  width: 55%;
+  width: 60%;
 }
+
 .request-block {
   display: flex;
   align-items: center;
@@ -18,14 +22,34 @@ $font-size: 12px;
     font-family: Oswald, sans-serif;
     text-align: left;
     .request-description-string-first {
-      font-size: $font-size*4;
+      font-size: $font*4;
       font-weight: 700;
-      line-height: $font-size*6;
+      margin: 0 0 20px 0;
     }
     .request-description-string-second {
-      font-size: $font-size*2;
+      font-size: $font*2;
       font-weight: 700;
-      line-height: $font-size*3;
+    }
+  }
+  .request-button {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: $background-color;
+    width: 320px;
+    height: 92px;
+    font-family: Oswald, sans-serif;
+    font-size: $font*3.333333;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    :hover {
+      cursor: pointer;
+    }
+    img{
+      padding: 0 0 0 $padding/2;
+    }
+    span{
+      padding: 0 $padding 0 0;
     }
   }
 }
