@@ -1,0 +1,31 @@
+//COLORS
+$accent-color: #FFC700;
+//SIZES
+$font-size: 12px;
+
+.content-container {
+  display: flex;
+  justify-content: space-between;
+  margin: auto;
+  width: 55%;
+}
+.request-block {
+  display: flex;
+  align-items: center;
+  background-color: $accent-color;
+  height: 180px;
+  .request-description {
+    font-family: Oswald, sans-serif;
+    text-align: left;
+    .request-description-string-first {
+      font-size: $font-size*4;
+      font-weight: 700;
+      line-height: $font-size*6;
+    }
+    .request-description-string-second {
+      font-size: $font-size*2;
+      font-weight: 700;
+      line-height: $font-size*3;
+    }
+  }
+}

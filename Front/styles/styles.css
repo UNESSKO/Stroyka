@@ -1,0 +1,29 @@
+.content-container {
+  display: flex;
+  justify-content: space-between;
+  margin: auto;
+  width: 55%;
+}
+
+.request-block {
+  display: flex;
+  align-items: center;
+  background-color: #FFC700;
+  height: 180px;
+}
+.request-block .request-description {
+  font-family: Oswald, sans-serif;
+  text-align: left;
+}
+.request-block .request-description .request-description-string-first {
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 72px;
+}
+.request-block .request-description .request-description-string-second {
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 36px;
+}
+
+/*# sourceMappingURL=styles.css.map */
