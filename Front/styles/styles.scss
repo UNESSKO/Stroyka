@@ -1,14 +1,16 @@
 /*--COLORS--*/
 $accent-color: #FFC700;
-$background-color: #FFFFFF;
+$dark-color: #404149;
+$white-color: #FFFFFF;
 /*--SIZES--*/
 $font: 12px;
 $padding: 12px;
 
 .content-container {
   display: flex;
+  flex-direction: inherit;
   align-items: inherit;
-  justify-content: space-between;
+  justify-content: inherit;
   margin: auto;
   width: 60%;
 }
@@ -16,32 +18,32 @@ $padding: 12px;
 .request-block {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   background-color: $accent-color;
   height: 180px;
   .request-description {
-    font-family: Oswald, sans-serif;
-    text-align: left;
-    .request-description-string-first {
-      font-size: $font*4;
-      font-weight: 700;
-      margin: 0 0 20px 0;
-    }
-    .request-description-string-second {
-      font-size: $font*2;
-      font-weight: 700;
-    }
+    text-transform: uppercase;
+  }
+  .request-description-string-first {
+    font-size: $font*4;
+    font-weight: 700;
+    margin: 0 0 20px 0;
+  }
+  .request-description-string-second {
+    font-size: $font*2;
+    font-weight: 700;
   }
   .request-button {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: $background-color;
+    background-color: $white-color;
     width: 320px;
     height: 92px;
-    font-family: Oswald, sans-serif;
     font-size: $font*3.333333;
     font-weight: 500;
     letter-spacing: 0.05em;
+    text-transform: uppercase;
     :hover {
       cursor: pointer;
     }
@@ -51,5 +53,28 @@ $padding: 12px;
     span{
       padding: 0 $padding $padding/3 0;
     }
+  }
+}
+
+.partners-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: $dark-color;
+  height: 360px;
+  .partners-caption {
+    font-size: $font*3;
+    font-weight: 500;
+    color: $white-color;
+    text-transform: uppercase;
+    margin: 0 0 36px 0;
+  }
+  .partners-ico-list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 100%;
   }
 }
