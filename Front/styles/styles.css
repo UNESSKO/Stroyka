@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /*--COLORS--*/
 /*--SIZES--*/
 .content-container {
@@ -7,24 +8,80 @@
   justify-content: inherit;
   margin: auto;
   width: 60%;
+  max-width: 2000px;
+}
+.content-container.wide {
+  width: 65%;
+  max-width: 2200px;
+}
+
+.services-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #FFFFFF;
+}
+.services-block .services-caption {
+  font-size: 36px;
+  font-weight: 500;
+  color: #000000;
+  text-transform: uppercase;
+  margin: 144px 0 48px 0;
+}
+.services-block .services-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 30%));
+  width: 100%;
+  justify-content: center;
+  justify-items: center; /* Размещаем карточку по центру */
+  column-gap: 30px; /* Отступ между колонками */
+  row-gap: 30px; /* Отступ между рядами */
+}
+.services-block .services-list .service-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  background-color: #FFC700;
+  height: 230px;
+  width: 100%;
+}
+.services-block .services-list .service-card .service-card-ico {
+  width: 80px;
+  height: 80px;
+  margin: 42px 0 0 0;
+}
+.services-block .services-list .service-card .service-card-description {
+  text-align: center;
+  font-size: 32.4px;
+  line-height: 48px;
+  font-weight: 500;
+  color: #000000;
+  text-transform: uppercase;
 }
 
 .request-block {
   display: flex;
+  flex-direction: row;
   align-items: center;
   justify-content: space-between;
   background-color: #FFC700;
-  height: 180px;
+  height: 140px;
 }
 .request-block .request-description {
   text-transform: uppercase;
+  color: #000000;
 }
-.request-block .request-description-string-first {
+.request-block .request-description.white {
+  color: #FFFFFF;
+}
+.request-block .request-description .request-description-string-first {
   font-size: 48px;
   font-weight: 700;
-  margin: 0 0 20px 0;
+  margin: 0 0 12px 0;
 }
-.request-block .request-description-string-second {
+.request-block .request-description .request-description-string-second {
   font-size: 24px;
   font-weight: 700;
 }

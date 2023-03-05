@@ -2,9 +2,11 @@
 $accent-color: #FFC700;
 $dark-color: #404149;
 $white-color: #FFFFFF;
+$black-color: #000000;
 /*--SIZES--*/
 $font: 12px;
 $padding: 12px;
+$margin: 12px;
 
 .content-container {
   display: flex;
@@ -13,25 +15,81 @@ $padding: 12px;
   justify-content: inherit;
   margin: auto;
   width: 60%;
+  max-width: 2000px;
+  &.wide{
+    width: 65%;
+    max-width: 2200px;
+  }
+}
+
+.services-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  background-color: $white-color;
+  .services-caption {
+    font-size: $font*3;
+    font-weight: 500;
+    color: $black-color;
+    text-transform: uppercase;
+    margin: $margin*12 0 $margin*4 0;
+  }
+  .services-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 30%));
+    width: 100%;
+    justify-content: center;
+    justify-items: center; /* Размещаем карточку по центру */
+    column-gap: $margin*2.5; /* Отступ между колонками */
+    row-gap: $margin*2.5; /* Отступ между рядами */
+    .service-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      background-color: $accent-color;
+      height: 230px;
+      width: 100%;
+      .service-card-ico {
+        width: 80px;
+        height: 80px;
+        margin: $padding*3.5 0 0 0;
+      }
+      .service-card-description {
+        text-align: center;
+        font-size: $font*2.7;
+        line-height: $font*4;
+        font-weight: 500;
+        color: $black-color;
+        text-transform: uppercase;
+      }
+    }
+  }
 }
 
 .request-block {
   display: flex;
+  flex-direction: row;
   align-items: center;
   justify-content: space-between;
   background-color: $accent-color;
-  height: 180px;
+  height: 140px;
   .request-description {
     text-transform: uppercase;
-  }
-  .request-description-string-first {
-    font-size: $font*4;
-    font-weight: 700;
-    margin: 0 0 20px 0;
-  }
-  .request-description-string-second {
-    font-size: $font*2;
-    font-weight: 700;
+    color: $black-color;
+    &.white {
+      color: $white-color;
+    }
+    .request-description-string-first {
+      font-size: $font*4;
+      font-weight: 700;
+      margin: 0 0 12px 0;
+    }
+    .request-description-string-second {
+      font-size: $font*2;
+      font-weight: 700;
+    }
   }
   .request-button {
     display: flex;
@@ -68,7 +126,7 @@ $padding: 12px;
     font-weight: 500;
     color: $white-color;
     text-transform: uppercase;
-    margin: 0 0 36px 0;
+    margin: 0 0 $margin*3 0;
   }
   .partners-ico-list {
     display: flex;
