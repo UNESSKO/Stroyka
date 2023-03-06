@@ -15,6 +15,17 @@
   max-width: 2200px;
 }
 
+.modal-container {
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+}
+
 .services-block {
   display: flex;
   flex-direction: column;
@@ -44,8 +55,9 @@
   align-items: center;
   justify-content: flex-start;
   background-color: #FFC700;
-  height: 230px;
+  min-height: 230px;
   width: 100%;
+  padding: 6px;
 }
 .services-block .services-list .service-card .service-card-ico {
   width: 80px;
@@ -67,10 +79,11 @@
   align-items: center;
   justify-content: space-between;
   background-color: #FFC700;
-  height: 140px;
+  min-height: 140px;
+  padding: 12px 0;
 }
 .request-block.big {
-  height: 180px;
+  min-height: 180px;
 }
 .request-block .request-description {
   text-transform: uppercase;
@@ -108,6 +121,16 @@
 }
 .request-block .request-button span {
   padding: 0 12px 4px 0;
+}
+
+.request-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #FFC700;
+  width: 400px;
+  min-height: 500px;
 }
 
 .partners-block {

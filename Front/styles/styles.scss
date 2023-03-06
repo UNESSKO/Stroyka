@@ -8,6 +8,7 @@ $font: 12px;
 $padding: 12px;
 $margin: 12px;
 $height: 100px;
+$width: 100px;
 
 .content-container {
   display: flex;
@@ -22,7 +23,16 @@ $height: 100px;
     max-width: 2200px;
   }
 }
-
+.modal-container {
+  position:fixed;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  top:0;
+  left:0;
+  width:100vw;
+  height:100vh;
+}
 .services-block {
   display: flex;
   flex-direction: column;
@@ -50,11 +60,12 @@ $height: 100px;
       align-items: center;
       justify-content: flex-start;
       background-color: $accent-color;
-      height: $height*2.3;
+      min-height: $height*2.3;
       width: 100%;
+      padding: $padding/2;
       .service-card-ico {
-        width: 80px;
-        height: 80px;
+        width: $width*0.8;
+        height: $height*0.8;
         margin: $padding*3.5 0 0 0;
       }
       .service-card-description {
@@ -75,9 +86,10 @@ $height: 100px;
   align-items: center;
   justify-content: space-between;
   background-color: $accent-color;
-  height: $height*1.4;
+  min-height: $height*1.4;
+  padding: $padding 0;
   &.big {
-       height: $height*1.8;
+    min-height: $height*1.8;
     }
   .request-description {
     text-transform: uppercase;
@@ -116,6 +128,16 @@ $height: 100px;
       padding: 0 $padding $padding/3 0;
     }
   }
+}
+
+.request-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  background-color: $accent-color;
+  width: $width*4;
+  min-height: $height*5;
 }
 
 .partners-block {

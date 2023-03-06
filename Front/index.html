@@ -16,40 +16,43 @@
     </header>
 <!--MAIN CONTENT-->
     <main>
+
         <!--Форма обратной связи (будет скрыта)-->
-        <form class="request-form" autocomplete="off" action='#'>
-            <!--Отсюда и до некст коммента поля для порно картинок, ну ты понял-->
-            <div class="input-box">
-                <label>
-                    <input name="name" type="text" placeholder="Ваше имя" />
-                </label>
-            </div>
-            <div class="input-box">
-                <label>
-                    <input name="phone" type="tel" placeholder="Телефон" />
-                </label>
-            </div>
-            <div class="input-box">
-                <label>
-                    <input name="email" type="email" placeholder="Электронная почта" />
-                </label>
-            </div>
-            <div class="input-box message-box">
-                <label>
-                    <textarea placeholder="Ваш вопрос"></textarea>
-                </label>
-            </div>
-            <!--Место под реКапчу-->
-            <div class="request-form-captcha">
-                <div id="request_form_captcha"></div>
-            </div>
-            <!--Кнопка сабмита запроса, не знаю какой тип кнопки тебе нуже, сам поставь все экшены тут пж, только не забудь запушить в мою ветку-->
-            <div class="request-form-submit-button">
-                <button class="request-form-submit-button" type="button">
-                    <span>Ваш запрос</span>
-                </button>
-            </div>
-        </form>
+        <div class="modal-container">
+            <form class="request-form" autocomplete="off" action='#'>
+                <!--Отсюда и до некст коммента поля для порно картинок, ну ты понял-->
+                <div class="input-box">
+                    <label>
+                        <input name="name" type="text" placeholder="Ваше имя" />
+                    </label>
+                </div>
+                <div class="input-box">
+                    <label>
+                        <input name="phone" type="tel" placeholder="Телефон" />
+                    </label>
+                </div>
+                <div class="input-box">
+                    <label>
+                        <input name="email" type="email" placeholder="Электронная почта" />
+                    </label>
+                </div>
+                <div class="input-box message-box">
+                    <label>
+                        <textarea placeholder="Отправить"></textarea>
+                    </label>
+                </div>
+                <!--Место под реКапчу-->
+                <div class="request-form-captcha">
+                    <div id="request_form_captcha"></div>
+                </div>
+                <!--Кнопка сабмита запроса, не знаю какой тип кнопки тебе нуже, сам поставь все экшены тут пж, только не забудь запушить в мою ветку-->
+                <div class="request-form-submit-button">
+                    <button class="request-form-submit-button" type="button">
+                        <span>Ваш запрос</span>
+                    </button>
+                </div>
+            </form>
+        </div>
         <!--Баннер обратной связи (верхний, черный текст)-->
         <section class="request-block">
             <div class="content-container wide">
