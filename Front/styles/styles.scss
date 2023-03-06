@@ -7,10 +7,15 @@ $black-color: #000000;
 $font: 12px;
 $padding: 12px;
 $margin: 12px;
+$border-radius: 8px;
 $height: 100px;
 $width: 100px;
 
+$transitions: 0.2s;
+
 .content-container {
+  opacity: 1;
+  transition: $transitions;
   display: flex;
   flex-direction: inherit;
   align-items: inherit;
@@ -24,6 +29,9 @@ $width: 100px;
   }
 }
 .modal-container {
+  opacity: 1;
+  visibility: visible;
+  transition: $transitions;
   position:fixed;
   display:flex;
   align-items:center;
@@ -32,6 +40,12 @@ $width: 100px;
   left:0;
   width:100vw;
   height:100vh;
+  backdrop-filter: blur(5px);
+}
+.hidden {
+  opacity: 0;
+  visibility: hidden;
+  transition: $transitions;
 }
 .services-block {
   display: flex;
@@ -131,13 +145,57 @@ $width: 100px;
 }
 
 .request-form {
+  z-index: 2;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
   background-color: $accent-color;
+  border-radius: $border-radius;
+  box-shadow: 4px 4px 16px 0 $black-color;
   width: $width*4;
-  min-height: $height*5;
+  padding: $padding*3;
+  .input-box {
+    height: 50px;
+    width: 100%;
+    margin-bottom: $margin;
+
+    &.message-box {
+      min-height: $height*1.5;
+    }
+
+    & input,
+    & textarea {
+      height: 100%;
+      width: 100%;
+      border: none;
+      border-radius: $border-radius;
+      background-color: $white-color;
+      padding: 0 $padding;
+      font-size: $font*1.3;
+      line-height: 1;
+      font-family: Oswald, sans-serif;
+      text-align: left;
+    }
+
+    & textarea {
+      resize: none;
+      padding: $padding;
+    }
+  }
+  .request-form-submit-button {
+    display: inline-block;
+    color: $white-color;
+    font-size: $font*2;
+    background: $dark-color;
+    width: 100%;
+    outline: none;
+    border: none;
+    padding: $padding*0.9 $padding*2;
+    border-radius: $border-radius;
+    &:hover {
+
+    }
+  }
 }
 
 .partners-block {

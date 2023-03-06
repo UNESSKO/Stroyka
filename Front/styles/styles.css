@@ -2,6 +2,8 @@
 /*--COLORS--*/
 /*--SIZES--*/
 .content-container {
+  opacity: 1;
+  transition: 0.2s;
   display: flex;
   flex-direction: inherit;
   align-items: inherit;
@@ -16,6 +18,9 @@
 }
 
 .modal-container {
+  opacity: 1;
+  visibility: visible;
+  transition: 0.2s;
   position: fixed;
   display: flex;
   align-items: center;
@@ -24,6 +29,13 @@
   left: 0;
   width: 100vw;
   height: 100vh;
+  backdrop-filter: blur(5px);
+}
+
+.hidden {
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.2s;
 }
 
 .services-block {
@@ -124,15 +136,51 @@
 }
 
 .request-form {
+  z-index: 2;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
   background-color: #FFC700;
+  border-radius: 8px;
+  box-shadow: 4px 4px 16px 0 #000000;
   width: 400px;
-  min-height: 500px;
+  padding: 36px;
 }
-
+.request-form .input-box {
+  height: 50px;
+  width: 100%;
+  margin-bottom: 12px;
+}
+.request-form .input-box.message-box {
+  min-height: 150px;
+}
+.request-form .input-box input, .request-form .input-box textarea {
+  height: 100%;
+  width: 100%;
+  border: none;
+  border-radius: 8px;
+  background-color: #FFFFFF;
+  padding: 0 12px;
+  font-size: 15.6px;
+  line-height: 1;
+  font-family: Oswald, sans-serif;
+  text-align: left;
+}
+.request-form .input-box textarea {
+  resize: none;
+  padding: 12px;
+}
+.request-form .request-form-submit-button {
+  display: inline-block;
+  color: #FFFFFF;
+  font-size: 24px;
+  background: #404149;
+  width: 100%;
+  outline: none;
+  border: none;
+  padding: 10.8px 24px;
+  border-radius: 8px;
+}
 .partners-block {
   display: flex;
   flex-direction: column;
