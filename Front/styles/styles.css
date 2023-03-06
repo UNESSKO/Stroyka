@@ -1,5 +1,8 @@
 /*--COLORS--*/
 /*--SIZES--*/
+/*--FONTS--*/
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&family=Oswald:wght@200;300;400;500;600;700&display=swap");
 .content-container {
   opacity: 1;
   transition: 0.2s;
@@ -274,6 +277,25 @@
   flex-wrap: wrap;
   justify-content: space-between;
   width: 100%;
+}
+
+.footer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #404149;
+  min-height: 80px;
+  padding: 12px 0;
+}
+.footer .footer-info {
+  font-family: Open Sans, sans-serif;
+  font-size: 15.84px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0.01em;
+  text-align: center;
+  color: #FFFFFF;
 }
 
 /*# sourceMappingURL=styles.css.map */

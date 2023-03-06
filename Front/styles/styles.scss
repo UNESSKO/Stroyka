@@ -12,6 +12,9 @@ $height: 100px;
 $width: 100px;
 
 $transitions: 0.2s;
+/*--FONTS--*/
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&family=Oswald:wght@200;300;400;500;600;700&display=swap');
 
 .content-container {
   opacity: 1;
@@ -294,5 +297,24 @@ $transitions: 0.2s;
     flex-wrap: wrap;
     justify-content: space-between;
     width: 100%;
+  }
+}
+
+.footer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  background-color: $dark-color;
+  min-height: $height*0.8;
+  padding: $padding 0;
+  .footer-info {
+    font-family: Open Sans, sans-serif;
+    font-size: $font*1.32;
+    font-weight: 400;
+    line-height: $font*2;
+    letter-spacing: 0.01em;
+    text-align: center;
+    color: $white-color;
   }
 }
