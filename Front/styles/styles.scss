@@ -28,6 +28,7 @@ $transitions: 0.2s;
     max-width: 2200px;
   }
 }
+
 .modal-container {
   opacity: 1;
   visibility: visible;
@@ -42,11 +43,86 @@ $transitions: 0.2s;
   height:100vh;
   backdrop-filter: blur(5px);
 }
+
 .hidden {
   opacity: 0;
   visibility: hidden;
   transition: $transitions;
 }
+
+.main-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  background-image: url("../src/main_background.png");
+  width: 100%;
+  min-height: $height*10;
+  .main-caption {
+    text-transform: uppercase;
+    text-align: center;
+    font-size: $font*5.35;
+    font-weight: 500;
+    line-height: $font*8;
+    color: $white-color;
+    margin: $margin*9 0 0 0;
+    letter-spacing: 0.02em;
+  }
+  .main-description {
+    text-transform: uppercase;
+    text-align: center;
+    font-size: $font*3;
+    font-weight: 300;
+    line-height: $font*4;
+    color: $white-color;
+    margin: $margin*2 0 0 0;
+  }
+  .main-stat-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 25%));
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    background-color: $accent-color;
+    min-height: $height*3;
+    padding: 0 $padding*6;
+    margin: $margin*3 0 $margin*3 0;
+    .main-stat-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      min-width: content-box;
+      height: 70%;
+      .main-stat-item-num {
+        text-transform: uppercase;
+        text-align: center;
+        font-size: $font*6;
+        font-weight: 500;
+        line-height: $font*9;
+        color: $black-color;
+      }
+      .main-stat-item-caption {
+        text-transform: uppercase;
+        text-align: center;
+        font-size: $font*3;
+        font-weight: 500;
+        line-height: $font*4.5;
+        color: $black-color;
+      }
+      .main-stat-item-description {
+        text-transform: lowercase;
+        text-align: center;
+        font-size: $font*1.5;
+        font-weight: 500;
+        line-height: $font*2;
+        color: $dark-color;
+      }
+    }
+  }
+}
+
 .services-block {
   display: flex;
   flex-direction: column;
@@ -65,9 +141,9 @@ $transitions: 0.2s;
     grid-template-columns: repeat(auto-fill, minmax(250px, 30%));
     width: 100%;
     justify-content: center;
-    justify-items: center; /* Размещаем карточку по центру */
-    column-gap: $margin*2.5; /* Отступ между колонками */
-    row-gap: $margin*2.5; /* Отступ между рядами */
+    justify-items: center;
+    column-gap: $margin*2.5;
+    row-gap: $margin*2.5;
     .service-card {
       display: flex;
       flex-direction: column;

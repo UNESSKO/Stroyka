@@ -2,9 +2,6 @@ const reqFormCont = document.getElementById("request_form_container");
 const reqForm = document.getElementById("request_form");
 const reqFormButton = document.querySelectorAll('.request-button');
 
-
-
-
 function show(id) {
     document.getElementById(id).classList.remove("hidden")
 }
@@ -22,7 +19,7 @@ document.addEventListener( 'click', (e) => {
             break;
         }
     }
-    if (!reqFormCont.classList.contains("hidden") && !e.composedPath().includes(reqForm) && checkClickPosition == false)
+    if (!reqFormCont.classList.contains("hidden") && !e.composedPath().includes(reqForm) && checkClickPosition === false)
     {
         hide(reqFormCont.id)
     }
