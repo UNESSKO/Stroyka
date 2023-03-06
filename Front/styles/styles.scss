@@ -7,6 +7,7 @@ $black-color: #000000;
 $font: 12px;
 $padding: 12px;
 $margin: 12px;
+$height: 100px;
 
 .content-container {
   display: flex;
@@ -49,7 +50,7 @@ $margin: 12px;
       align-items: center;
       justify-content: flex-start;
       background-color: $accent-color;
-      height: 230px;
+      height: $height*2.3;
       width: 100%;
       .service-card-ico {
         width: 80px;
@@ -74,7 +75,10 @@ $margin: 12px;
   align-items: center;
   justify-content: space-between;
   background-color: $accent-color;
-  height: 140px;
+  height: $height*1.4;
+  &.big {
+       height: $height*2.6;
+    }
   .request-description {
     text-transform: uppercase;
     color: $black-color;
@@ -97,7 +101,7 @@ $margin: 12px;
     justify-content: space-between;
     background-color: $white-color;
     width: 320px;
-    height: 92px;
+    height: $height*0.92;
     font-size: $font*3.333333;
     font-weight: 500;
     letter-spacing: 0.05em;
@@ -120,7 +124,7 @@ $margin: 12px;
   align-items: center;
   justify-content: center;
   background-color: $dark-color;
-  height: 360px;
+  height: $height*3.6;
   .partners-caption {
     font-size: $font*3;
     font-weight: 500;
