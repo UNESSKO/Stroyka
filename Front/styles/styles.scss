@@ -1,8 +1,10 @@
 /*--COLORS--*/
 $accent-color: #FFC700;
+$accent-color-second: #FFA800;
 $dark-color: #404149;
 $white-color: #FFFFFF;
 $black-color: #000000;
+$grey-color: #999999;
 /*--SIZES--*/
 $font: 12px;
 $padding: 12px;
@@ -160,6 +162,11 @@ $transitions: 0.2s;
         width: $width*0.8;
         height: $height*0.8;
         margin: $padding*3.5 0 0 0;
+        &.small-ico {
+          width: $width;
+          height: $height;
+          margin: $margin*1.8 0 0 0;
+        }
       }
       .service-card-description {
         text-align: center;
@@ -297,6 +304,61 @@ $transitions: 0.2s;
     flex-wrap: wrap;
     justify-content: space-between;
     width: 100%;
+  }
+}
+
+.contacts-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: $white-color;
+  padding: $padding*9 0 $padding*12 0;
+  .contacts-caption {
+    font-size: $font*3;
+    font-weight: 500;
+    color: $black-color;
+    text-transform: uppercase;
+    margin: 0 0 $margin*4 0;
+  }
+  .contacts-list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 100%;
+    .contacts-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      width: 25%;
+      .contact-item-icon {
+        width: $width*0.5;
+        height: $height*0.5;
+        fill: $accent-color-second;
+        margin: 0 0 $margin*1.5 0
+      }
+      .contact-item-caption {
+        text-align: center;
+        font-size: $font*2;
+        line-height: $font*3;
+        font-weight: 500;
+        color: $grey-color;
+        text-transform: uppercase;
+      }
+      .contact-item-description {
+        text-align: center;
+        font-size: $font*2;
+        line-height: $font*3;
+        font-weight: 500;
+        color: $black-color;
+        text-transform: uppercase;
+        &.highlighted {
+          color: $accent-color-second;
+        }
+      }
+    }
   }
 }
 

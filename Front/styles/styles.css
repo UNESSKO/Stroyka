@@ -151,6 +151,11 @@
   height: 80px;
   margin: 42px 0 0 0;
 }
+.services-block .services-list .service-card .service-card-ico.small-ico {
+  width: 100px;
+  height: 100px;
+  margin: 21.6px 0 0 0;
+}
 .services-block .services-list .service-card .service-card-description {
   text-align: center;
   font-size: 32.4px;
@@ -277,6 +282,61 @@
   flex-wrap: wrap;
   justify-content: space-between;
   width: 100%;
+}
+
+.contacts-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #FFFFFF;
+  padding: 108px 0 144px 0;
+}
+.contacts-block .contacts-caption {
+  font-size: 36px;
+  font-weight: 500;
+  color: #000000;
+  text-transform: uppercase;
+  margin: 0 0 48px 0;
+}
+.contacts-block .contacts-list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 100%;
+}
+.contacts-block .contacts-list .contacts-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  width: 25%;
+}
+.contacts-block .contacts-list .contacts-item .contact-item-icon {
+  width: 50px;
+  height: 50px;
+  fill: #FFA800;
+  margin: 0 0 18px 0;
+}
+.contacts-block .contacts-list .contacts-item .contact-item-caption {
+  text-align: center;
+  font-size: 24px;
+  line-height: 36px;
+  font-weight: 500;
+  color: #999999;
+  text-transform: uppercase;
+}
+.contacts-block .contacts-list .contacts-item .contact-item-description {
+  text-align: center;
+  font-size: 24px;
+  line-height: 36px;
+  font-weight: 500;
+  color: #000000;
+  text-transform: uppercase;
+}
+.contacts-block .contacts-list .contacts-item .contact-item-description.highlighted {
+  color: #FFA800;
 }
 
 .footer {
