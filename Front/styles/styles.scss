@@ -13,7 +13,7 @@ $border-radius: 8px;
 $height: 100px;
 $width: 100px;
 
-$transitions: 0.2s;
+$transitions: 0.2s ease-in-out;
 /*--FONTS--*/
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&family=Oswald:wght@200;300;400;500;600;700&display=swap');
@@ -30,6 +30,10 @@ $transitions: 0.2s;
   max-width: 2000px;
   &.wide{
     width: 65%;
+    max-width: 2200px;
+  }
+  &.ultra-wide {
+    width: 100%;
     max-width: 2200px;
   }
 }
@@ -176,6 +180,88 @@ $transitions: 0.2s;
         color: $black-color;
         text-transform: uppercase;
       }
+    }
+  }
+}
+
+.carousel-block {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: $height*11;
+  .carousel{
+    position: relative;
+    transform: translate(-50%, -50%);
+    user-select: none;
+    .carousel-item {
+      position: absolute;
+      transform: translate(-50%, -50%);
+      width: $width*6.5;
+      height: $height*6.3;
+      overflow: hidden;
+      transition: all $transitions;
+      z-index: -1;
+      opacity: 0;
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      &.active {
+        opacity: 1;
+        z-index: 3;
+        box-shadow: 0 0 5px -1px rgba(0, 0, 0, 0.90);
+      }
+      &.prev {
+        z-index: 2;
+        opacity: 0.55;
+        transform: translate(-145%, -50%) scale(0.9);
+        box-shadow: 0 0 5px -1px rgba(0, 0, 0, 0.70);
+      }
+      &.next {
+        z-index: 2;
+        opacity: 0.55;
+        transform: translate(45%, -50%) scale(0.9);
+        box-shadow: 0 0 5px -1px rgba(0, 0, 0, 0.70);
+      }
+    }
+    .carousel-button-container {
+      display: flex;
+      justify-content: space-between;
+      position: absolute;
+      transform: translate(-50%, -50%);
+      width: $width*6.5;
+      z-index: 4;
+      .carousel-button {
+        color: $white-color;
+        cursor: pointer;
+        position: relative;
+        opacity: 0.75;
+        transition: all $transitions;
+        .carousel-button-ico{
+          position: absolute;
+          height: 100px;
+          width: 100px;
+          transform: translate(-50%, -50%);
+          &.left {
+            transform: translate(-50%, -50%) rotate(180deg);
+          }
+        }
+      }
+      .carousel-button:hover {
+        opacity: 1;
+      }
+      /*.carousel-button:before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: $width*0.8;
+        height: $height*0.8;
+        background-color: $black-color;
+        border-radius: 50%;
+      }*/
     }
   }
 }
