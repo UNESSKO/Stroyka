@@ -2,7 +2,6 @@
 const reqFormCont = document.getElementById("request_form_container");
 const reqForm = document.getElementById("request_form");
 const reqFormButton = document.querySelectorAll('.request-button');
-const slider = document.querySelector(".carousel");
 const slides = document.querySelectorAll(".carousel-item");
 const button = document.querySelectorAll(".carousel-button");
 //VARIABLES
