@@ -1,11 +1,10 @@
 from django.db import models
-from phonenumber_field.modelfields import PhoneNumberField
 
 
 class Application(models.Model):
     name = models.CharField('Имя', max_length=15)
     email = models.EmailField('E-mail')
-    phone = PhoneNumberField('Телефон')
+    phone = models.CharField('Телефон', max_length=20)
     comment = models.CharField('Вопрос', max_length=250)
     date = models.DateTimeField('Дата обращения', auto_now_add=True)
     status = models.BooleanField('Статус', default=False)
@@ -45,7 +44,7 @@ class GAGAGA(models.Model):
 
 class Review(models.Model):
     name = models.CharField('Имя', max_length=15)
-    date = models.DateTimeField('Дата и время')
+    date = models.DateTimeField('Дата и время', auto_now_add=True)
     company = models.CharField('Компания', max_length=250)
     review = models.TextField('Отзыв')
 
