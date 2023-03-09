@@ -10,3 +10,5 @@
 </br>
 <a href="https://pypi.org/project/django-recaptcha/">Гайд по рекапче в жанго №2</a>
 </br>
+<h2>Очко</h2>
+<a href="https://www.internet-technologies.ru/articles/sozdanie-karuseli-s-pom-css-scroll-snap-i-js.html/">1</a>
