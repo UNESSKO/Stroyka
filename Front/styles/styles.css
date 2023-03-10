@@ -20,6 +20,11 @@
   width: 100%;
   max-width: 2200px;
 }
+.content-container.fit {
+  width: fit-content;
+  flex-direction: row;
+  margin: 0;
+}
 .content-container.overflow-hidden {
   overflow: hidden;
 }
@@ -462,28 +467,31 @@
   overflow-y: hidden;
   max-width: fit-content;
   display: flex;
-  scroll-snap-type: x proximity;
+  scroll-snap-type: x mandatory;
 }
 .reviews-block .reviews-carousel .reviews-list {
   display: flex;
   justify-content: center;
-  margin: 0 0 48px 0;
+  margin: 0 0 66px 0;
 }
 .reviews-block .reviews-carousel .reviews-list .review {
   display: flex;
   flex-direction: column;
   width: 350px;
   min-height: fit-content;
-  margin: 0 24px 0 0;
-  scroll-snap-align: start;
+  margin: 0 12px 0 12px;
 }
-.reviews-block .reviews-carousel .reviews-list .review:last-child {
-  margin: 0;
+.reviews-block .reviews-carousel .reviews-list .review:first-child {
+  margin: 0 12px 0 0;
+}
+.reviews-block .reviews-carousel .reviews-list .review:nth-last-child(-n+2) {
+  margin: 0 0 0 12px;
 }
 .reviews-block .reviews-carousel .reviews-list .review blockquote {
   background-color: #F7F7F7;
   padding: 24px;
   height: 100%;
+  min-height: 260px;
 }
 .reviews-block .reviews-carousel .reviews-list .review blockquote:before {
   content: "“";
@@ -495,7 +503,7 @@
   text-align: center;
 }
 .reviews-block .reviews-carousel .reviews-list .review blockquote p {
-  margin: -36px 0 0 0;
+  margin: -48px 0 0 0;
   font-family: "Open Sans", sans-serif;
   font-style: normal;
   font-weight: 400;
@@ -514,6 +522,144 @@
 .reviews-block .reviews-carousel .reviews-list .review figcaption cite {
   font-style: normal;
   color: #FFA800;
+}
+.reviews-block .reviews-carousel .reviews-list .review-form-wrap {
+  margin: 0 0 0 24px;
+  transform: scaleX(1);
+  transform-origin: right;
+  transition: 0.2s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.reviews-block .reviews-carousel .reviews-list .review-form-wrap.hidden {
+  transform: scaleX(0);
+  width: 0;
+  margin: 0;
+  transform-origin: right;
+  transition: 0.2s ease-in-out;
+}
+.reviews-block .reviews-carousel .reviews-list .review-form-wrap ::-webkit-scrollbar {
+  background-color: #FFFFFF;
+  border-radius: 50px;
+  width: 5px;
+}
+.reviews-block .reviews-carousel .reviews-list .review-form-wrap ::-webkit-scrollbar-thumb {
+  background-color: #999999;
+  border-radius: 50px;
+}
+.reviews-block .reviews-carousel .reviews-list .review-form-wrap ::-webkit-scrollbar-thumb:hover {
+  background-color: #FFA800;
+  cursor: pointer;
+}
+.reviews-block .reviews-carousel .reviews-list .review-form-wrap .review-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 350px;
+  padding: 12px;
+  background-color: #F3F3F3;
+  border-radius: 8px;
+  height: 100%;
+}
+.reviews-block .reviews-carousel .reviews-list .review-form-wrap .review-form .review-form-textarea-wrap {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  border: none;
+  border-radius: 8px;
+  background-color: #F7F7F7;
+  margin: 0 0 12px 0;
+}
+.reviews-block .reviews-carousel .reviews-list .review-form-wrap .review-form .review-form-textarea-wrap label {
+  font-family: "Oswald", sans-serif;
+  font-size: 96px;
+  font-weight: 700;
+  color: #FFA800;
+  text-transform: uppercase;
+  text-align: left;
+  padding: 12px 0 0 24px;
+}
+.reviews-block .reviews-carousel .reviews-list .review-form-wrap .review-form .review-form-textarea-wrap textarea {
+  height: 100%;
+  width: 100%;
+  resize: none;
+  border: none;
+  background-color: #F7F7F7;
+  border-radius: 8px;
+  font-family: "Open Sans", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14.4px;
+  line-height: 19.2px;
+  color: #404149;
+  padding: 0 24px 0 24px;
+  margin: -48px 0 0 0;
+}
+.reviews-block .reviews-carousel .reviews-list .review-form-wrap .review-form .review-form-textarea-wrap textarea:focus {
+  outline: none;
+  background-color: #F7F7F7;
+}
+.reviews-block .reviews-carousel .reviews-list .review-form-wrap .review-form .review-form-textarea-wrap span {
+  width: 100%;
+  text-align: right;
+}
+.reviews-block .reviews-carousel .reviews-list .review-form-wrap .review-form .review-form-inputs {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-between;
+  gap: 12px;
+}
+.reviews-block .reviews-carousel .reviews-list .review-form-wrap .review-form .review-form-inputs input {
+  height: 100%;
+  width: 100%;
+  border: none;
+  background-color: #F7F7F7;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  font-family: "Oswald", sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 21.6px;
+  line-height: 30px;
+}
+.reviews-block .reviews-carousel .reviews-list .review-form-wrap .review-form .review-form-inputs input:focus {
+  outline: none;
+  background-color: #F7F7F7;
+}
+.reviews-block .reviews-carousel .reviews-list .review-form-wrap .review-form .review-form-inputs .review-form-name {
+  color: #000000;
+}
+.reviews-block .reviews-carousel .reviews-list .review-form-wrap .review-form .review-form-inputs .review-form-name::placeholder {
+  color: #000000;
+}
+.reviews-block .reviews-carousel .reviews-list .review-form-wrap .review-form .review-form-inputs .review-form-company {
+  color: #FFA800;
+  align-self: flex-end;
+}
+.reviews-block .reviews-carousel .reviews-list .review-form-wrap .review-form .review-form-inputs .review-form-company::placeholder {
+  color: #FFA800;
+}
+.reviews-block .reviews-carousel .reviews-list .review-form-wrap .review-form-submit {
+  position: relative;
+  height: 0;
+  top: 12px;
+}
+.reviews-block .plus-review {
+  width: 0;
+  transition: 0.2s ease-in-out;
+  opacity: 1;
+  align-self: flex-start;
+  position: relative;
+  left: 24px;
+  cursor: pointer;
+}
+.reviews-block .plus-review img {
+  border-radius: 50%;
 }
 
 .partners-block {
@@ -629,6 +775,9 @@
   line-height: 1;
   font-family: Oswald, sans-serif;
   text-align: left;
+}
+.request-form .input-box input:focus, .request-form .input-box textarea:focus {
+  outline: none;
 }
 .request-form .input-box textarea {
   resize: none;

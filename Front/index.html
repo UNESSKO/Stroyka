@@ -232,8 +232,8 @@
         </section>
         <!--Отзывы-->
         <section class="reviews-block">
-            <div class="content-container">
-                <h2 class="block-caption reviews">Отзывы о работе с нами</h2>
+            <h2 class="block-caption reviews">Отзывы о работе с нами</h2>
+            <div class="content-container fit">
                 <div class="reviews-carousel">
                     <div class="reviews-list">
                         <figure class="review">
@@ -254,20 +254,28 @@
                             </blockquote>
                             <figcaption>Иванов Иван, <cite>ООО "Газпром-Арена"</cite></figcaption>
                         </figure>
-                        <figure class="review">
-                            <blockquote>
-                                <p>Мы очень довольны работой, которую проводила строительная компания " "! Все работы были выполнены в срок и по доступным ценам. Спасибо за высокое качество работы и профессионализм со стороны персонала!</p>
-                            </blockquote>
-                            <figcaption>Иванов Иван, <cite>ООО "Газпром-Арена"</cite></figcaption>
-                        </figure>
-                        <figure class="review">
-                            <blockquote>
-                                <p>Мы очень довольны работой, которую проводила строительная компания " "! Все работы были выполнены в срок и по доступным ценам. Спасибо за высокое качество работы и профессионализм со стороны персонала!</p>
-                            </blockquote>
-                            <figcaption>Иванов Иван, <cite>ООО "Газпром-Арена"</cite></figcaption>
-                        </figure>
+                        <form class="review-form-wrap hidden">
+                            <div class="review-form">
+                                <div class="review-form-textarea-wrap">
+                                    <label for="review-form-textarea">“</label>
+                                    <textarea id="review-form-textarea" name="review-form-review" placeholder="Введите текст"></textarea>
+                                    <span>250/250</span>
+                                </div>
+                                <div class="review-form-inputs">
+                                    <label for="review-form-name">
+                                        <input class="review-form-name" id="review-form-name" name="review-form-name" type="text" placeholder ="Имя">
+                                    </label>
+                                    <label for="review-form-company">
+                                        <input class="review-form-company" id="review-form-company" name="review-form-company" type="text" placeholder ="Компания">
+                                    </label>
+                                </div>
+                            </div>
+                            <button class="review-form-submit"><img src="src/add_review_submit_ico.svg" alt="Подтвердить"></button>
+                        </form>
                     </div>
+
                 </div>
+                <button class="plus-review"><img src="src/add_review_ico.svg" alt="Добавить отзыв"></button>
             </div>
         </section>
         <!--Баннер обратной связи (нижний, белый текст, больше верхнего по размеру)-->
