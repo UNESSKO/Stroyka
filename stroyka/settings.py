@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 
 from pathlib import Path
 
+import os
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -39,6 +41,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'main',
+    'captcha',
+    'snowpenguin.django.recaptcha3',
 ]
 
 MIDDLEWARE = [
@@ -119,12 +123,23 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 STATIC_URL = 'static/'
+STATIC_ROOT = 'static'
 
 STATICFILES_DIRS = [
     BASE_DIR / "static"
 ]
 
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+RECAPTCHA_PUBLIC_KEY = '6LevL-ckAAAAACFEICo4Qdmuu4iIlvARy7cG-TqP'
+RECAPTCHA_PRIVATE_KEY = '6LevL-ckAAAAACZSOFtCuV5jzl8GbnCpdy4i2cxF'
+RECAPTCHA_DEFAULT_ACTION = 'generic'
+RECAPTCHA_REQUIRED_SCORE = 0.5 # опционально, можно установить требуемый порог прохождения проверки
+

@@ -1,255 +1,370 @@
-{% load static %}
+{% load static recaptcha3 %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Stroyka - development</title>
     <link rel="stylesheet" type="text/css" href="{% static 'main/styles/reset.min.css' %}">
-    <link rel="stylesheet" type="text/css" href="{%  static 'main/styles/styles.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'main/styles/styles.min.css' %}">
+
+    {% recaptcha_init %}
+    {% recaptcha_ready action_name='homepage' %}
 </head>
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&family=Oswald:wght@200;300;400;500;600;700&display=swap');
 </style>
 <body>
 <!--HEADER-->
-    <header>
+<header>
 
-    </header>
+</header>
 <!--MAIN CONTENT-->
-    <main>
-        <!--Форма обратной связи (вылезает по нажатию на кнопки, скрывается по нажатию на фон) ПРОВЕРКИ ПОЛЕЙ НА СТОРОНЕ ФРОНТА ПОКА НЕТ!-->
-        <div class="modal-container hidden" id="request_form_container">
-            <form method="post" class="request-form" id="request_form" autocomplete="off" action='#'>
-                {% csrf_token %}
-                {{ form.as_p }}
-                <!--Отсюда и до некст коммента поля для запроса-->
-                <div class="input-box">
-                    <label for="request_form_name">
-                        <input name="name" type="text" id="request_form_name" placeholder="Ваше имя" />
-                    </label>
+<main>
+    <!--Форма обратной связи (вылезает по нажатию на кнопки, скрывается по нажатию на фон) ПРОВЕРКИ ПОЛЕЙ НА СТОРОНЕ ФРОНТА ПОКА НЕТ!-->
+    <div class="modal-container hidden" id="request_form_container">
+        <form method="post" class="request-form" id="request_form" autocomplete="off" action=''>
+            {% csrf_token %}
+            <!--Отсюда и до некст коммента поля для запроса-->
+            <div class="input-box">
+                <label for="request_form_name">
+                    {{ form.name }}
+                </label>
+            </div>
+            <div class="input-box">
+                <label for="request_form_phone">
+                    {{ form.phone }}
+                </label>
+            </div>
+            <div class="input-box">
+                <label for="request_form_email">
+                    {{ form.email }}
+                </label>
+            </div>
+            <div class="input-box message-box">
+                <label for="request_form_message">
+                    {{ form.comment }}
+                </label>
+            </div>
+            <!--Место под реКапчу-->
+            <div class="request-form-captcha">
+                <div id="request_form_captcha">
+                    {{ form.captcha }}
                 </div>
-                <div class="input-box">
-                    <label for="request_form_phone">
-                        <input name="phone" type="tel" id="request_form_phone" placeholder="Телефон" />
-                    </label>
-                </div>
-                <div class="input-box">
-                    <label for="request_form_email">
-                        <input name="email" type="email" id="request_form_email" placeholder="Электронная почта" />
-                    </label>
-                </div>
-                <div class="input-box message-box">
-                    <label for="request_form_message">
-                        <textarea name="message" id="request_form_message" placeholder="Ваш запрос"></textarea>
-                    </label>
-                </div>
-                <!--Место под реКапчу-->
-                <div class="request-form-captcha">
-                    <div id="request_form_captcha"></div>
-                </div>
-                <!--Кнопка сабмита запроса, не знаю какой тип кнопки тебе нуже, сам поставь все экшены тут пж, только не забудь запушить в мою ветку-->
-                <div class="request-form-submit-button">
-                    <button class="request-form-submit-button" type="submit">
-                        <span>Отправить</span>
-                    </button>
-                </div>
-            </form>
+            </div>
+            <!--Кнопка сабмита запроса, не знаю какой тип кнопки тебе нуже, сам поставь все экшены тут пж, только не забудь запушить в мою ветку-->
+            <div class="request-form-submit-button">
+                <button class="request-form-submit-button" type="submit">
+                    <span>Отправить</span>
+                </button>
+            </div>
+        </form>
+    </div>
+    <!--Основной экран-->
+    <section class="main-block">
+        <div class="content-container">
+            <h1 class="block-caption main">строительная компания</h1>
+            <p class="main-description">Полный цикл строительно-монтажных работ</p>
         </div>
-        <!--Основной экран-->
-        <section class="main-block">
-            <div class="content-container">
-                <h1 class="main-caption">Молодая и растущая<br>строительная компания</h1>
-                <p class="main-description">Полный цикл строительно-монтажных работ</p>
+        <div class="content-container">
+            <div class="main-stat-list">
+                <article class="main-stat-item">
+                    <p class="main-stat-item-num">3</p>
+                    <p class="main-stat-item-caption">Года</p>
+                    <p class="main-stat-item-description">На рынке</p>
+                </article>
+                <article class="main-stat-item">
+                    <p class="main-stat-item-num">28</p>
+                    <p class="main-stat-item-caption">Объектов</p>
+                    <p class="main-stat-item-description">Успещно сданы</p>
+                </article>
+                <article class="main-stat-item">
+                    <p class="main-stat-item-num">3</p>
+                    <p class="main-stat-item-caption">Партнера</p>
+                    <p class="main-stat-item-description">Системообразующие компании</p>
+                </article>
+                <article class="main-stat-item">
+                    <p class="main-stat-item-num">>10</p>
+                    <p class="main-stat-item-caption">Единиц</p>
+                    <p class="main-stat-item-description">Собственной тяжелой техники</p>
+                </article>
             </div>
-            <div class="content-container">
-               <div class="main-stat-list">
-                    <article class="main-stat-item">
-                        <p class="main-stat-item-num">3</p>
-                        <p class="main-stat-item-caption">Года</p>
-                        <p class="main-stat-item-description">На рынке</p>
-                    </article>
-                    <article class="main-stat-item">
-                        <p class="main-stat-item-num">28</p>
-                        <p class="main-stat-item-caption">Объектов</p>
-                        <p class="main-stat-item-description">Успещно сданы</p>
-                    </article>
-                    <article class="main-stat-item">
-                        <p class="main-stat-item-num">3</p>
-                        <p class="main-stat-item-caption">Партнера</p>
-                        <p class="main-stat-item-description">Системообразующие компании</p>
-                    </article>
-                    <article class="main-stat-item">
-                        <p class="main-stat-item-num">>10</p>
-                        <p class="main-stat-item-caption">Единиц</p>
-                        <p class="main-stat-item-description">Собственной тяжелой техники</p>
-                    </article>
-                </div>
+        </div>
+    </section>
+    <!--Проекты-->
+    <section class="projects-block">
+        <div class="content-container">
+            <h2 class="block-caption projects">Наши самые большие проекты</h2>
+            <div class="projects-list">
+                <article class="project-card">
+                    <img class="project-card-image" src="{% static 'main/src/media/image_1.png' %}" alt="">
+                    <h3 class="project-card-caption">Лебединский ГОК</h3>
+                    <p class="project-card-description">Мы сделали самую красивую арену в Европе. Это открытие стало для
+                        нас прорывной точкой для разивтия на следующие десятилетия. Мы очень рады данному еву.</p>
+                </article>
+                <article class="project-card">
+                    <img class="project-card-image" src="{% static 'main/src/media/image_2.png' %}" alt="">
+                    <h3 class="project-card-caption">Газпром Арена</h3>
+                    <p class="project-card-description">Мы сделали самую красивую арену в Европе. Это открытие стало для
+                        нас прорывной точкой для разивтия на следующие десятилетия. Мы очень рады данному еву.</p>
+                </article>
+                <article class="project-card">
+                    <img class="project-card-image" src="{% static 'main/src/media/image_4.png' %}" alt="">
+                    <h3 class="project-card-caption">Газпром Арена</h3>
+                    <p class="project-card-description">Мы сделали самую красивую арену в Европе. Это открытие стало для
+                        нас прорывной точкой для разивтия на следующие десятилетия. Мы очень рады данному еву.</p>
+                </article>
             </div>
-        </section>
-        <!--Проекты-->
-        <section class="projects-block">
-            <div class="content-container">
-                <h2 class="projects-block-caption">Наши самые большие проекты</h2>
-                <div class="projects-list">
-                    <article class="project-card">
-                        <img class="project-card-image" src="{% static 'main/src/carousel/image_1.png' %}" alt="">
-                        <h3 class="project-card-caption">Лебединский ГОК</h3>
-                        <p class="project-card-description">Мы сделали самую красивую арену в Европе. Это открытие стало для нас прорывной точкой для разивтия на следующие десятилетия. Мы очень рады данному еву.</p>
-                    </article>
-                    <article class="project-card">
-                        <img class="project-card-image" src="{% static 'main/src/carousel/image_2.png' %}" alt="">
-                        <h3 class="project-card-caption">Газпром Арена</h3>
-                        <p class="project-card-description">Мы сделали самую красивую арену в Европе. Это открытие стало для нас прорывной точкой для разивтия на следующие десятилетия. Мы очень рады данному еву.</p>
-                    </article>
-                    <article class="project-card">
-                        <img class="project-card-image" src="{% static 'main/src/carousel/image_4.png' %}" alt="">
-                        <h3 class="project-card-caption">Газпром Арена</h3>
-                        <p class="project-card-description">Мы сделали самую красивую арену в Европе. Это открытие стало для нас прорывной точкой для разивтия на следующие десятилетия. Мы очень рады данному еву.</p>
-                    </article>
-                </div>
+        </div>
+    </section>
+    <!--Баннер обратной связи (верхний, черный текст)-->
+    <section class="request-block">
+        <div class="content-container wide">
+            <div class="request-description">
+                <p class="request-description-string-first">Самые умные проекты</p>
+                <p class="request-description-string-second">Реализуем самые смелые решения в России!</p>
             </div>
-        </section>
-        <!--Баннер обратной связи (верхний, черный текст)-->
-        <section class="request-block">
-            <div class="content-container wide">
-                <div class="request-description">
-                    <p class="request-description-string-first">Самые умные проекты</p>
-                    <p class="request-description-string-second">Реализуем самые смелые решения в России!</p>
-                </div>
-                <div class="request-button">
-                    <button class="request-button" type="button" onclick="show('request_form_container')">
-                        <img class="request-button-icon" src="{% static 'main/src/request_ico.svg' %}" alt=""><span>Ваш запрос</span>
-                    </button>
-                </div>
+            <div class="request-button">
+                <button class="request-button" type="button" onclick="show('request_form_container')">
+                    <img class="request-button-icon" src="{% static 'main/src/request_ico.svg' %}" alt=""><span>Ваш запрос</span>
+                </button>
             </div>
-        </section>
-        <!--Список услуг (сетка карточек адаптивна, может быть больше и меньше 6)--> 
-        <!--TODO: карточки в перспективе должны быть кликабельны и пересылать на какие-либо якоря/страницы-->
-        <section class="services-block">
-            <div class="content-container">
-                <h2 class="services-caption">Чем мы занимаемся?</h2>
-                <div class="services-list">
-                    <article class="service-card">
-                        <img class="service-card-ico" src="{% static 'main/src/serv1_ico.png' %}" alt="">
-                        <h3 class="service-card-description">Монолитные<br>работы</h3>
-                    </article>
-                    <article class="service-card">
-                        <img class="service-card-ico small-ico" src="{% static 'main/src/serv2_ico.png' %}" alt="">
-                        <h3 class="service-card-description">Строительство нежилых зданий</h3>
-                    </article>
-                    <article class="service-card">
-                        <img class="service-card-ico" src="{% static 'main/src/serv3_ico.png' %}" alt="">
-                        <h3 class="service-card-description">Фасадные работы и отделка</h3>
-                    </article>
-                    <article class="service-card">
-                        <img class="service-card-ico" src="{% static 'main/src/serv4_ico.png' %}" alt="">
-                        <h3 class="service-card-description">Монтаж/демонтаж сооружений</h3>
-                    </article>
-                    <article class="service-card">
-                        <img class="service-card-ico" src="{% static 'main/src/serv5_ico.png' %}" alt="">
-                        <h3 class="service-card-description">Кровельные работы</h3>
-                    </article>
-                    <article class="service-card">
-                        <img class="service-card-ico" src="{% static 'main/src/serv6_ico.png' %}" alt="">
-                        <h3 class="service-card-description">Поставка оборудования</h3>
-                    </article>
-                </div>
+        </div>
+    </section>
+    <!--Список услуг (сетка карточек адаптивна, может быть больше и меньше 6)-->
+    <section class="services-block">
+        <div class="content-container">
+            <h2 class="block-caption services">Чем мы занимаемся?</h2>
+            <div class="services-list">
+                <article class="service-card">
+                    <img class="service-card-ico" src="{% static 'main/src/serv1_ico.png' %}" alt="">
+                    <h3 class="service-card-description">Монолитные<br>работы</h3>
+                </article>
+                <article class="service-card">
+                    <img class="service-card-ico small-ico" src="{% static 'main/src/serv2_ico.png' %}" alt="">
+                    <h3 class="service-card-description">Строительство нежилых зданий</h3>
+                </article>
+                <article class="service-card">
+                    <img class="service-card-ico" src="{% static 'main/src/serv3_ico.png' %}" alt="">
+                    <h3 class="service-card-description">Фасадные работы и отделка</h3>
+                </article>
+                <article class="service-card">
+                    <img class="service-card-ico" src="{% static 'main/src/serv4_ico.png' %}" alt="">
+                    <h3 class="service-card-description">Монтаж/демонтаж сооружений</h3>
+                </article>
+                <article class="service-card">
+                    <img class="service-card-ico" src="{% static 'main/src/serv5_ico.png' %}" alt="">
+                    <h3 class="service-card-description">Кровельные работы</h3>
+                </article>
+                <article class="service-card">
+                    <img class="service-card-ico" src="{% static 'main/src/serv6_ico.png' %}" alt="">
+                    <h3 class="service-card-description">Поставка оборудования</h3>
+                </article>
             </div>
-        </section>
-        <!--Каруселька-->
-        <section class="carousel-block">
-            <div class="content-container ultra-wide">
-                <div class="carousel">
+        </div>
+    </section>
+    <!--Каруселька-->
+    <section class="carousel-block">
+        <div class="content-container ultra-wide">
+            <div class="carousel">
+                {% for i in img %}
                     <div class="carousel-item">
-                        <img src="{% static 'main/src/carousel/image_1.png' %}" alt="">
+                        <img src="{{ i.img.url }}" alt="">
                     </div>
-                    <div class="carousel-item">
-                        <img src="{% static 'main/src/carousel/image_2.png' %}" alt="">
-                    </div>
-                    <div class="carousel-item">
-                        <img src="{% static 'main/src/carousel/image_3.png' %}" alt="">
-                    </div>
-                    <div class="carousel-item">
-                        <img src="{% static 'main/src/carousel/image_4.png' %}" alt="">
-                    </div>
-                    <div class="carousel-button-container">
-                        <div class="carousel-button"><img class="carousel-button-ico left" src="{% static 'main/src/arrow_ico.svg' %}" alt=""></div>
-                        <div class="carousel-button"><img class="carousel-button-ico right" src="{% static 'main/src/arrow_ico.svg' %}" alt=""></div>
-                    </div>
+                {% endfor %}
+                <div class="carousel-button-container">
+                    <div class="carousel-button"><img class="carousel-button-ico left"
+                                                      src="{% static 'main/src/arrow_ico.svg' %}" alt=""></div>
+                    <div class="carousel-button"><img class="carousel-button-ico right"
+                                                      src="{% static 'main/src/arrow_ico.svg' %}" alt=""></div>
                 </div>
             </div>
-        </section>
-        <!--Партнеры компании-->
-        <section class="partners-block">
-            <div class="content-container">
-                <h2 class="partners-caption">Наши партнеры</h2>
-                <div class="partners-ico-list">
-                    <img class="partner-ico" src="{% static 'main/src/metallinvest_ico.svg' %}" alt="Металлинвест">
-                    <img class="partner-ico" src="{% static 'main/src/berksho_ico.svg' %}" alt="Berksho Constructions">
-                    <img class="partner-ico" src="{% static 'main/src/berksho_ico.svg' %}" alt="Berksho Constructions">
-                    <img class="partner-ico" src="{% static 'main/src/berksho_ico.svg' %}" alt="Berksho Constructions">
-                    <img class="partner-ico" src="{% static 'main/src/berksho_ico.svg' %}" alt="Berksho Constructions">
+        </div>
+    </section>
+    <!--FAQ-->
+    <section class="faq-block">
+        <div class="content-container ultra-wide">
+            <h2 class="block-caption faq">Ответы на вопросы</h2>
+            <div class="faq-list">
+                <div class="faq-list-column">
+                    <details>
+                        <summary>В каких регионах вы работаете?</summary>
+                        <p>
+                            Работаем по всей территории Российской Федерации и ближнему зарубежью.
+                        </p>
+                    </details>
+                    <details>
+                        <summary>Какие гарантии вы даёте?</summary>
+                        <p>
+                            Мы гарантируем соблюдение всех установленных договором сроков, фиксированную цену,
+                            качественные материалы. Гарантия на построенный объект подробно расписана в договоре. В
+                            случае возникновения спорных ситуаций мы не уходим от ответственности и всегда находим
+                            оптимальные варианты решения совместно с клиентом.
+                        </p>
+                    </details>
+                    <details>
+                        <summary>Сколько времени проходит с момента подписания договора до начала строительства?
+                        </summary>
+                        <p>
+                            После подписания договора подготовка строительного материала на нашем производстве занимает
+                            от _ до _ дней.
+                        </p>
+                    </details>
+                </div>
+                <div class="faq-list-column">
+                    <details>
+                        <summary>Вы поставляете бывшее в употреблении оборудование? На сколько оно «б/у»? Где гарантия,
+                            что оно работает нормально?
+                        </summary>
+                        <p>
+                            Все поставляемое оборудование находится в отличном рабочем состоянии, и перед продажей
+                            проходит обязательное тестирование. Надежность оборудования популярных брендов известна.
+                            Принципиально все отличие работоспособного used-оборудования от нового состоит только в
+                            цене, иногда — в наличии фирменной упаковки и крепежа.
+                        </p>
+                    </details>
+                    <details>
+                        <summary>Можно ли получать информацию о ценах и оборудовании по электронной почте?</summary>
+                        <p>
+                            Не только можно, но и нужно! Для этого свяжитесь с нами или заполните форму для обратной
+                            связи.
+                        </p>
+                    </details>
                 </div>
             </div>
-        </section>
-        <!--Баннер обратной связи (нижний, белый текст, больше верхнего по размеру)-->
-        <section class="request-block big">
-            <div class="content-container wide">
-                <div class="request-description white">
-                    <p class="request-description-string-first">Хотите с нами работать?</p>
-                    <p class="request-description-string-second">Оставьте заявку и мы свяжемся с Вами!</p>
-                </div>
-                <div class="request-button">
-                    <button class="request-button" type="button" onclick="show('request_form_container')">
-                        <img class="request-button-icon" src="{% static 'main/src/request_ico.svg' %}" alt=""><span>Ваш запрос</span>
-                    </button>
+        </div>
+    </section>
+    <!--Партнеры компании-->
+    <section class="partners-block">
+        <div class="content-container">
+            <h2 class="block-caption partners">Наши партнеры</h2>
+            <div class="partners-ico-list">
+                <img class="partner-ico" src="{% static 'main/src/metallinvest_ico.svg' %}" alt="Металлинвест">
+                <img class="partner-ico" src="{% static 'main/src/berksho_ico.svg' %}" alt="Berksho Constructions">
+                <img class="partner-ico" src="{% static 'main/src/berksho_ico.svg' %}" alt="Berksho Constructions">
+                <img class="partner-ico" src="{% static 'main/src/berksho_ico.svg' %}" alt="Berksho Constructions">
+                <img class="partner-ico" src="{% static 'main/src/berksho_ico.svg' %}" alt="Berksho Constructions">
+            </div>
+        </div>
+    </section>
+    <!--Отзывы-->
+    <section class="reviews-block">
+        <div class="content-container">
+            <h2 class="block-caption reviews">Отзывы о работе с нами</h2>
+            <div class="reviews-carousel">
+                <div class="reviews-list">
+                    <figure class="review">
+                        <blockquote>
+                            <p>Мы очень довольны работой, которую проводила строительная компания " "! Все работы были
+                                выполнены в срок и по доступным ценам. Спасибо за высокое качество работы и
+                                профессионализм со стороны персонала!</p>
+                        </blockquote>
+                        <figcaption>Иванов Иван,<cite>ООО "Газпром-Арена"</cite></figcaption>
+                    </figure>
+                    <figure class="review">
+                        <blockquote>
+                            <p>Мы очень довольны работой, которую проводила строительная компания " "! Все работы были
+                                выполнены в срок и по доступным ценам. Спасибо за высокое качество работы и
+                                профессионализм со стороны персонала!</p>
+                        </blockquote>
+                        <figcaption>Иванов Иван, <cite>ООО "Газпром-Арена"</cite></figcaption>
+                    </figure>
+                    <figure class="review">
+                        <blockquote>
+                            <p>Мы очень довольны работой, которую проводила строительная компания " "! Все работы были
+                                выполнены в срок и по доступным ценам. Спасибо за высокое качество работы и
+                                профессионализм со стороны персонала!</p>
+                        </blockquote>
+                        <figcaption>Иванов Иван, <cite>ООО "Газпром-Арена"</cite></figcaption>
+                    </figure>
+                    <figure class="review">
+                        <blockquote>
+                            <p>Мы очень довольны работой, которую проводила строительная компания " "! Все работы были
+                                выполнены в срок и по доступным ценам. Спасибо за высокое качество работы и
+                                профессионализм со стороны персонала!</p>
+                        </blockquote>
+                        <figcaption>Иванов Иван, <cite>ООО "Газпром-Арена"</cite></figcaption>
+                    </figure>
+                    <figure class="review">
+                        <blockquote>
+                            <p>Мы очень довольны работой, которую проводила строительная компания " "! Все работы были
+                                выполнены в срок и по доступным ценам. Спасибо за высокое качество работы и
+                                профессионализм со стороны персонала!</p>
+                        </blockquote>
+                        <figcaption>Иванов Иван, <cite>ООО "Газпром-Арена"</cite></figcaption>
+                    </figure>
                 </div>
             </div>
-        </section>
-        <!--Блок контактов-->
-        <section class="contacts-block">
-            <div class="content-container">
-                <h2 class="contacts-caption">Контакты</h2>
-                <div class="contacts-list">
-                    <article class="contacts-item" id="contact_address">
-                        <svg class="contact-item-icon" width="37" height="49" viewBox="0 0 37 49" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M18.5 0C8.46875 0 0.5 8.15625 0.5 18C0.5 24.75 2.65625 26.8125 14.6562 45.9375C16.4375 48.75 20.4688 48.75 22.25 45.9375C34.25 26.8125 36.5 24.75 36.5 18C36.5 8.0625 28.3438 0 18.5 0ZM18.5 43.5C6.5 24.375 5 23.1562 5 18C5 10.5938 11 4.5 18.5 4.5C25.9062 4.5 32 10.5938 32 18C32 23.1562 30.5 24.1875 18.5 43.5ZM11 18C11 22.2188 14.2812 25.5 18.5 25.5C22.625 25.5 26 22.2188 26 18C26 13.875 22.625 10.5 18.5 10.5C14.2812 10.5 11 13.875 11 18Z"/>
-                        </svg>
-                        <h3 class="contact-item-caption">Адрес:</h3>
-                        <p class="contact-item-description">Невский проспект 140,<br>офис 140-142</p>
-                    </article>
-                    <article class="contacts-item" id="contact_phone">
-                        <svg class="contact-item-icon" width="49" height="49" viewBox="0 0 49 49" xmlns="http://www.w3.org/2000/svg">
+        </div>
+    </section>
+    <!--Баннер обратной связи (нижний, белый текст, больше верхнего по размеру)-->
+    <section class="request-block big">
+        <div class="content-container wide">
+            <div class="request-description white">
+                <p class="request-description-string-first">Хотите с нами работать?</p>
+                <p class="request-description-string-second">Оставьте заявку и мы свяжемся с Вами!</p>
+            </div>
+            <div class="request-button">
+                <button class="request-button" type="button" onclick="show('request_form_container')">
+                    <img class="request-button-icon" src="{% static 'main/src/request_ico.svg' %}" alt=""><span>Ваш запрос</span>
+                </button>
+            </div>
+        </div>
+    </section>
+    <!--Блок контактов-->
+    <section class="contacts-block">
+        <div class="content-container">
+            <h2 class="block-caption contacts">Контакты</h2>
+            <div class="contacts-list">
+                <article class="contacts-item" id="contact_address">
+                    <svg class="contact-item-icon" width="37" height="49" viewBox="0 0 37 49"
+                         xmlns="http://www.w3.org/2000/svg">
+                        <path d="M18.5 0C8.46875 0 0.5 8.15625 0.5 18C0.5 24.75 2.65625 26.8125 14.6562 45.9375C16.4375 48.75 20.4688 48.75 22.25 45.9375C34.25 26.8125 36.5 24.75 36.5 18C36.5 8.0625 28.3438 0 18.5 0ZM18.5 43.5C6.5 24.375 5 23.1562 5 18C5 10.5938 11 4.5 18.5 4.5C25.9062 4.5 32 10.5938 32 18C32 23.1562 30.5 24.1875 18.5 43.5ZM11 18C11 22.2188 14.2812 25.5 18.5 25.5C22.625 25.5 26 22.2188 26 18C26 13.875 22.625 10.5 18.5 10.5C14.2812 10.5 11 13.875 11 18Z"/>
+                    </svg>
+                    <h3 class="contact-item-caption">Адрес:</h3>
+                    <p class="contact-item-description">Невский проспект 140,<br>офис 140-142</p>
+                </article>
+                <article class="contacts-item" id="contact_phone">
+                    <svg class="contact-item-icon" width="49" height="49" viewBox="0 0 49 49"
+                         xmlns="http://www.w3.org/2000/svg">
                         <path d="M45.125 3.15625L36.3125 1.1875C34.25 0.71875 32.1875 1.75 31.4375 3.625L27.3125 13.1875C26.5625 14.875 27.0312 16.9375 28.5312 18.1562L32.2812 21.25C29.6562 26.125 25.5312 30.1562 20.6562 32.875L17.5625 29.125C16.3438 27.625 14.2812 27.1562 12.5938 27.9062L3.03125 31.9375C1.15625 32.7812 0.125 34.8438 0.59375 36.9062L2.5625 45.7188C3.03125 47.6875 4.8125 49 6.78125 49C29.75 49 48.5 30.4375 48.5 7.375C48.5 5.40625 47.0938 3.625 45.125 3.15625ZM6.96875 44.5L5 36.0625L14.1875 32.125L19.4375 38.5C28.7188 34.0938 33.5 29.3125 37.9062 20.0312L31.5312 14.7812L35.4688 5.59375L44 7.5625C43.9062 27.9062 27.3125 44.4062 6.96875 44.5Z"/>
                     </svg>
-                        <h3 class="contact-item-caption">Телефон:</h3>
-                        <p class="contact-item-description">8 (812) 111-22-33<br>8 (812) 111-22-33</p>
-                    </article>
-                    <article class="contacts-item" id="work_time">
-                        <svg class="contact-item-icon" width="47" height="48" viewBox="0 0 47 48" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M23.5 0.75C10.6562 0.75 0.25 11.1562 0.25 24C0.25 36.8438 10.6562 47.25 23.5 47.25C36.3438 47.25 46.75 36.8438 46.75 24C46.75 11.1562 36.3438 0.75 23.5 0.75ZM23.5 42.75C13.0938 42.75 4.75 34.4062 4.75 24C4.75 13.6875 13.0938 5.25 23.5 5.25C33.8125 5.25 42.25 13.6875 42.25 24C42.25 34.4062 33.8125 42.75 23.5 42.75ZM29.2188 33C29.7812 33.375 30.4375 33.2812 30.8125 32.7188L32.5938 30.375C32.9688 29.8125 32.875 29.1562 32.3125 28.7812L26.125 24.1875V10.875C26.125 10.3125 25.5625 9.75 25 9.75H22C21.3438 9.75 20.875 10.3125 20.875 10.875V26.3438C20.875 26.625 20.9688 27 21.25 27.1875L29.2188 33Z"/>
-                        </svg>
-                        <h3 class="contact-item-caption">Время работы:</h3>
-                        <p class="contact-item-description">ПН-СБ<br>10:00 - 20:00</p>
-                    </article>
-                    <article class="contacts-item" id="contact_email">
-                        <svg class="contact-item-icon" width="49" height="36" viewBox="0 0 49 36" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M44 0H5C2.46875 0 0.5 2.0625 0.5 4.5V31.5C0.5 34.0312 2.46875 36 5 36H44C46.4375 36 48.5 34.0312 48.5 31.5V4.5C48.5 2.0625 46.4375 0 44 0ZM44 4.5V8.34375C41.8438 10.125 38.4688 12.75 31.3438 18.375C29.75 19.5938 26.6562 22.5938 24.5 22.5C22.25 22.5938 19.1562 19.5938 17.5625 18.375C10.4375 12.75 7.0625 10.125 5 8.34375V4.5H44ZM5 31.5V14.1562C7.0625 15.8438 10.1562 18.2812 14.75 21.9375C16.8125 23.5312 20.4688 27.0938 24.5 27C28.4375 27.0938 32 23.5312 34.1562 21.9375C38.75 18.2812 41.8438 15.8438 44 14.1562V31.5H5Z"/>
-                        </svg>
-                        <h3 class="contact-item-caption">e-mail:</h3>
-                        <p class="contact-item-description highlighted">info@vip.ru</p>
-                    </article>
-                </div>
+                    <h3 class="contact-item-caption">Телефон:</h3>
+                    <p class="contact-item-description">8 (812) 111-22-33<br>8 (812) 111-22-33</p>
+                </article>
+                <article class="contacts-item" id="work_time">
+                    <svg class="contact-item-icon" width="47" height="48" viewBox="0 0 47 48"
+                         xmlns="http://www.w3.org/2000/svg">
+                        <path d="M23.5 0.75C10.6562 0.75 0.25 11.1562 0.25 24C0.25 36.8438 10.6562 47.25 23.5 47.25C36.3438 47.25 46.75 36.8438 46.75 24C46.75 11.1562 36.3438 0.75 23.5 0.75ZM23.5 42.75C13.0938 42.75 4.75 34.4062 4.75 24C4.75 13.6875 13.0938 5.25 23.5 5.25C33.8125 5.25 42.25 13.6875 42.25 24C42.25 34.4062 33.8125 42.75 23.5 42.75ZM29.2188 33C29.7812 33.375 30.4375 33.2812 30.8125 32.7188L32.5938 30.375C32.9688 29.8125 32.875 29.1562 32.3125 28.7812L26.125 24.1875V10.875C26.125 10.3125 25.5625 9.75 25 9.75H22C21.3438 9.75 20.875 10.3125 20.875 10.875V26.3438C20.875 26.625 20.9688 27 21.25 27.1875L29.2188 33Z"/>
+                    </svg>
+                    <h3 class="contact-item-caption">Время работы:</h3>
+                    <p class="contact-item-description">ПН-СБ<br>10:00 - 20:00</p>
+                </article>
+                <article class="contacts-item" id="contact_email">
+                    <svg class="contact-item-icon" width="49" height="36" viewBox="0 0 49 36"
+                         xmlns="http://www.w3.org/2000/svg">
+                        <path d="M44 0H5C2.46875 0 0.5 2.0625 0.5 4.5V31.5C0.5 34.0312 2.46875 36 5 36H44C46.4375 36 48.5 34.0312 48.5 31.5V4.5C48.5 2.0625 46.4375 0 44 0ZM44 4.5V8.34375C41.8438 10.125 38.4688 12.75 31.3438 18.375C29.75 19.5938 26.6562 22.5938 24.5 22.5C22.25 22.5938 19.1562 19.5938 17.5625 18.375C10.4375 12.75 7.0625 10.125 5 8.34375V4.5H44ZM5 31.5V14.1562C7.0625 15.8438 10.1562 18.2812 14.75 21.9375C16.8125 23.5312 20.4688 27.0938 24.5 27C28.4375 27.0938 32 23.5312 34.1562 21.9375C38.75 18.2812 41.8438 15.8438 44 14.1562V31.5H5Z"/>
+                    </svg>
+                    <h3 class="contact-item-caption">e-mail:</h3>
+                    <p class="contact-item-description highlighted">info@vip.ru</p>
+                </article>
             </div>
-        </section>
-    </main>
-<!--FOOTER-->
-    <footer class="footer">
-        <div class="content-container">
-            <p class="footer-info">© 2019 Строительная компания</p>
-            <p class="footer-info">Разработано лучшей студей</p>
         </div>
-    </footer>
+    </section>
+    <form method="post">
+        {% csrf_token %}
+        {{ review.name }}
+        {{ review.company }}
+        {{ review.review }}
+        <button type="submit">JOPA</button>
+    </form>
+</main>
+<!--FOOTER-->
+<footer class="footer">
+    <div class="content-container">
+        <p class="footer-info">© 2019 Строительная компания</p>
+        <p class="footer-info">Разработано лучшей студей</p>
+    </div>
+</footer>
 </body>
 <!--JS EbaninaV.24-->
 <script src="{% static 'main/scripts/script.min.js' %}"></script>

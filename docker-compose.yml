@@ -1,0 +1,45 @@
+services:
+  web:
+    build: .
+    command: python manage.py runserver 0.0.0.0:8000
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/code
+
+  db:
+    image: sqlite
+    container_name: stroyka
+    volumes:
+      - ./db/var/lib/sqlite
+
+  stroyka:
+    build:
+      dockerfile: Dockerfile
+      context: .
+    image: stroyka:lates
+    container_name: stroyka
+    depends_on:
+      - db
+    volumes:
+      - static_volume:/sa/static
+      - media_volume:/sa/media
+    command: >
+      bash -c "./manage.py collectstatic --noinput && ./manage.py migrate && gunicorn -b 0.0.0.0:8000 soaqaz.wsgi.application"
+  nginx:
+    build:
+      dockerfile: ./Dockerfile
+      context: ./docker/nginx
+    container_name: stroyka_nginx
+    image: stroyka_nginx
+    volumes:
+      - static_volume:/sa/static
+      - media_volume:/sa/media
+    depends_on:
+      - stroyka
+    ports:
+      - "${NGINX_EXTERNAL_PORT}:80"
+
+volumes:
+  static_volume:
+  media_volume:

@@ -1,13 +1,15 @@
 from django.db import models
+from captcha.fields import ReCaptchaField
 
 
 class Application(models.Model):
     name = models.CharField('Имя', max_length=15)
     email = models.EmailField('E-mail')
     phone = models.CharField('Телефон', max_length=20)
-    comment = models.CharField('Вопрос', max_length=250)
+    comment = models.TextField('Вопрос', max_length=250)
     date = models.DateTimeField('Дата обращения', auto_now_add=True)
     status = models.BooleanField('Статус', default=False)
+    captcha = ReCaptchaField()
 
     def __str__(self):
         return self.name
@@ -35,7 +37,7 @@ class GAGAGA(models.Model):
     img = models.ImageField('Изображение')
 
     def __str__(self):
-        return self.img
+        return self.img.name
 
     class Meta:
         verbose_name = 'Фотография'

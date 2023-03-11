@@ -4,11 +4,12 @@ const reqForm = document.getElementById("request_form");
 const reqFormButton = document.querySelectorAll('.request-button');
 const slides = document.querySelectorAll(".carousel-item");
 const button = document.querySelectorAll(".carousel-button");
+const reviewsCarousel = document.querySelector(".reviews-carousel")
+const reviewsList = document.querySelector(".reviews-list")
 //VARIABLES
 let current = Math.floor(Math.random()*slides.length);
 let prev = current > 0 ? current - 1 : slides.length - 1;
 let next = current < slides.length - 1 ? current + 1 : 0;
-
 //SHOW-HIDE Elements
 function show(id) {
     document.getElementById(id).classList.remove("hidden")
@@ -28,23 +29,32 @@ const update = () => {
     slides[prev].classList.add("prev");
     slides[next].classList.add("next");
 }
-
 for (let i = 0; i < button.length; i++) {
     button[i].addEventListener("click", () => i === 0 ? gotoPrev() : gotoNext());
 }
-
 const gotoPrev = () => current > 0 ? gotoNum(current - 1) : gotoNum(slides.length - 1);
 const gotoNext = () => current < slides.length - 1 ? gotoNum(current + 1) : gotoNum(0);
-
 const gotoNum = number => {
     current = number;
     prev = current > 0 ? current - 1 : slides.length - 1;
     next = current < slides.length - 1 ? current + 1 : 0;
-
     update();
 }
 update();
-//Modal window closing listner
+//REVIEWS
+const scrollReviews = () => {
+    let windowWidth = document.documentElement.clientWidth;
+    let reviewsWindowCount = Math.floor((windowWidth-100)/350);
+    if (reviewsWindowCount > 4) {reviewsWindowCount = 4}
+    reviewsCarousel.style.width = reviewsWindowCount * (370) + 'px';
+    reviewsCarousel.scrollTo(((reviewsList.offsetWidth/2)-370), 0);
+}
+scrollReviews()
+//Reviews carousel resize
+window.addEventListener('resize', (e) => {
+    scrollReviews();
+});
+//Modal window closing listener
 document.addEventListener( 'click', (e) => {
     let checkClickPosition = false;
     for (let i =0; i < reqFormButton.length; i++)
