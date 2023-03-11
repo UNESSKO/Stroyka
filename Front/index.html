@@ -16,28 +16,28 @@
     </header>
 <!--MAIN CONTENT-->
     <main>
-        <!--Форма обратной связи (вылезает по нажатию на кнопки, скрывается по нажатию на фон) ПРОВЕРКИ ПОЛЕЙ НА СТОРОНЕ ФРОНТА ПОКА НЕТ!-->
+        <!--Форма обратной связи (вылезает по нажатию на кнопки, скрывается по нажатию на фон)-->
         <div method="post" class="modal-container hidden" id="request_form_container">
             <form class="request-form" id="request_form" autocomplete="off" action='#'>
                 <!--Отсюда и до некст коммента поля для запроса-->
                 <div class="input-box">
                     <label for="request_form_name">
-                        <input name="name" type="text" id="request_form_name" placeholder="Ваше имя" />
+                        <input name="name" type="text" id="request_form_name" placeholder="Ваше имя" maxlength="25" required/>
                     </label>
                 </div>
                 <div class="input-box">
                     <label for="request_form_phone">
-                        <input name="phone" type="tel" id="request_form_phone" placeholder="Телефон" />
+                        <input name="phone" type="tel" id="request_form_phone" placeholder="Телефон" maxlength="25"/>
                     </label>
                 </div>
                 <div class="input-box">
                     <label for="request_form_email">
-                        <input name="email" type="email" id="request_form_email" placeholder="Электронная почта" />
+                        <input name="email" type="email" id="request_form_email" placeholder="Электронная почта" maxlength="40" required/>
                     </label>
                 </div>
                 <div class="input-box message-box">
                     <label for="request_form_message">
-                        <textarea name="message" id="request_form_message" placeholder="Ваш запрос"></textarea>
+                        <textarea name="message" id="request_form_message" placeholder="Ваш запрос" maxlength="25" required></textarea>
                     </label>
                 </div>
                 <!--Место под реКапчу-->
@@ -257,16 +257,16 @@
                         <form class="review-form-wrap hidden">
                             <div class="review-form">
                                 <div class="review-form-textarea-wrap">
-                                    <label for="review-form-textarea">“</label>
-                                    <textarea id="review-form-textarea" name="review-form-review" placeholder="Введите текст"></textarea>
-                                    <span>250/250</span>
+                                    <label for="review_form_textarea">“</label>
+                                    <textarea id="review_form_textarea" name="review-form-review" placeholder="Введите текст" maxlength="250" required></textarea>
+                                    <span id="review_form_counter">0/250</span>
                                 </div>
                                 <div class="review-form-inputs">
-                                    <label for="review-form-name">
-                                        <input class="review-form-name" id="review-form-name" name="review-form-name" type="text" placeholder ="Имя">
+                                    <label for="review_form_name">
+                                        <input class="review-form-name" id="review_form_name" name="review-form-name" type="text" placeholder ="Имя" maxlength="25" required>
                                     </label>
-                                    <label for="review-form-company">
-                                        <input class="review-form-company" id="review-form-company" name="review-form-company" type="text" placeholder ="Компания">
+                                    <label for="review_form_company">
+                                        <input class="review-form-company" id="review_form_company" name="review-form-company" type="text" placeholder ="Компания" maxlength="25" required>
                                     </label>
                                 </div>
                             </div>

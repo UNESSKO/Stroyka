@@ -8,6 +8,8 @@ const reviewsCarousel = document.querySelector(".reviews-carousel")
 const reviewsList = document.querySelector(".reviews-list")
 const plusReview = document.querySelector(".plus-review")
 const formReview = document.querySelector(".review-form-wrap")
+const formReviewTextarea = document.getElementById("review_form_textarea")
+const formReviewCharsCounter = document.getElementById("review_form_counter")
 //VARIABLES
 let current = Math.floor(Math.random()*slides.length);
 let prev = current > 0 ? current - 1 : slides.length - 1;
@@ -67,7 +69,12 @@ window.addEventListener('resize', (e) => {
 document.querySelector(".plus-review").addEventListener( 'click', (e) => {
     plusReview.classList.add("hidden");
     formReview.classList.remove("hidden");
+    reviewsCarousel.scrollTo(reviewsList.offsetWidth, 0);
 
+})
+//Review chars counter
+formReviewTextarea.addEventListener('input', ()=> {
+    formReviewCharsCounter.innerText = formReviewTextarea.value.length + "/250";
 })
 //Modal window closing listener
 document.addEventListener( 'click', (e) => {
