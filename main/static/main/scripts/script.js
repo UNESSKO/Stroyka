@@ -6,6 +6,10 @@ const slides = document.querySelectorAll(".carousel-item");
 const button = document.querySelectorAll(".carousel-button");
 const reviewsCarousel = document.querySelector(".reviews-carousel")
 const reviewsList = document.querySelector(".reviews-list")
+const plusReview = document.querySelector(".plus-review")
+const formReview = document.querySelector(".review-form-wrap")
+const formReviewTextarea = document.getElementById("review_form_textarea")
+const formReviewCharsCounter = document.getElementById("review_form_counter")
 //VARIABLES
 let current = Math.floor(Math.random()*slides.length);
 let prev = current > 0 ? current - 1 : slides.length - 1;
@@ -44,16 +48,34 @@ update();
 //REVIEWS
 const scrollReviews = () => {
     let windowWidth = document.documentElement.clientWidth;
-    let reviewsWindowCount = Math.floor((windowWidth-100)/350);
-    if (reviewsWindowCount > 4) {reviewsWindowCount = 4}
-    reviewsCarousel.style.width = reviewsWindowCount * (370) + 'px';
-    reviewsCarousel.scrollTo(((reviewsList.offsetWidth/2)-370), 0);
+    let reviewsWindowCount = Math.floor((windowWidth-250)/350);
+    if (reviewsWindowCount > 5) {reviewsWindowCount = 5}
+    reviewsCarousel.style.width = reviewsWindowCount * 374 - 24 + 'px';
+    if (reviewsWindowCount % 2 === 0) {
+        reviewsList.querySelectorAll (".review").forEach((e) => e.style.scrollSnapAlign = 'start');
+    }
+    else {
+        reviewsList.querySelectorAll (".review").forEach((e) => e.style.scrollSnapAlign = 'center' );
+    }
+    reviewsCarousel.scrollTo(((reviewsList.offsetWidth/2)-((reviewsWindowCount/2)*364)), 0);
+    plusReview.style.height = reviewsList.querySelector("figure").querySelector("blockquote").clientHeight +'px';
 }
 scrollReviews()
 //Reviews carousel resize
 window.addEventListener('resize', (e) => {
     scrollReviews();
 });
+//Add review
+document.querySelector(".plus-review").addEventListener( 'click', (e) => {
+    plusReview.classList.add("hidden");
+    formReview.classList.remove("hidden");
+    reviewsCarousel.scrollTo(reviewsList.offsetWidth, 0);
+
+})
+//Review chars counter
+formReviewTextarea.addEventListener('input', ()=> {
+    formReviewCharsCounter.innerText = formReviewTextarea.value.length + "/250";
+})
 //Modal window closing listener
 document.addEventListener( 'click', (e) => {
     let checkClickPosition = false;

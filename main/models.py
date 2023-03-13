@@ -3,12 +3,18 @@ from captcha.fields import ReCaptchaField
 
 
 class Application(models.Model):
+
+    STATUS = [
+        (1, 'В работе'),
+        (2, 'Обработан')
+    ]
+
     name = models.CharField('Имя', max_length=15)
     email = models.EmailField('E-mail')
     phone = models.CharField('Телефон', max_length=20)
     comment = models.TextField('Вопрос', max_length=250)
     date = models.DateTimeField('Дата обращения', auto_now_add=True)
-    status = models.BooleanField('Статус', default=False)
+    status = models.PositiveSmallIntegerField(('Статус'), choices=STATUS, default=1)
     captcha = ReCaptchaField()
 
     def __str__(self):

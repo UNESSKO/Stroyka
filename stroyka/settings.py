@@ -123,7 +123,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 STATIC_URL = 'static/'
-STATIC_ROOT = 'static'
 
 STATICFILES_DIRS = [
     BASE_DIR / "static"
@@ -138,8 +137,8 @@ MEDIA_URL = '/media/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-RECAPTCHA_PUBLIC_KEY = '6LevL-ckAAAAACFEICo4Qdmuu4iIlvARy7cG-TqP'
-RECAPTCHA_PRIVATE_KEY = '6LevL-ckAAAAACZSOFtCuV5jzl8GbnCpdy4i2cxF'
+RECAPTCHA_PUBLIC_KEY = '6LcqcfskAAAAAN69ItOjJQlOEUMmq1w_-t_70ZEb'
+RECAPTCHA_PRIVATE_KEY = '6LcqcfskAAAAAJQ_7-sN50zFaAVOg0FjGHE1MJ3v'
 RECAPTCHA_DEFAULT_ACTION = 'generic'
 RECAPTCHA_REQUIRED_SCORE = 0.5 # опционально, можно установить требуемый порог прохождения проверки
 
